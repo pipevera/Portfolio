@@ -10,7 +10,7 @@ const {date, title, description, link} = Astro.props
 <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
 <div class="space-y-2">
    <time class="mb-1 text-md font-normal leading-none text-white opacity-50">{date}</time>
-   <h2 class="text-3xl font-semibold text-white opacity-90">{title}</h2>
+   <h2 class="text-3xl font-semibold text-white">{title}</h2>
    <p class="mb-4 text-kg font-normal text-white opacity-90">{description}</p>
    {
       link && (
