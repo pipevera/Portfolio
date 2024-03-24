@@ -1,9 +1,9 @@
 ---
-import { Image } from "astro:assets";
+
 ---
 
 <header class="text-white w-full h-screen ">
-   <div class="flex sticky top-0 container mx-auto items-center justify-between p-6 opacity-90 ">
+   <div class="flex container mx-auto items-center justify-between p-6 opacity-90 ">
       <p class="font-bold md:text-3xl text-xl">Felipe Vera</p>
       <nav class="flex space-x-4 md:space-x-10">
          <a href=""><p>Home</p></a>
@@ -11,16 +11,14 @@ import { Image } from "astro:assets";
          <a href=""><p>Contact</p></a>
       </nav>
    </div>
-   <div class="w-full gap-3 px-6 container mx-auto flex flex-col justify-center items-center h-5/6 opacity-90 animate-fade-up animate-ease-in-out">
+   <div class="w-full gap-3 px-6 container mx-auto flex flex-col justify-center items-start md:items-center h-5/6 opacity-90 animate-fade-up animate-ease-in-out">
       <h1 class="text-5xl font-bold md:text-7xl">Felipe Vera</h1>
       <p class="text-2xl">Front End Developer</p>
-      <p class="text-center md:w-[50%] text-balance">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste eius ducimus nostrum maiores autem corrupti provident repellat. Iure ullam fuga ab fugit aspernatur, illo, eum recusandae quae rerum minus harum!</p>
-      <div class="text-center">
-         <span class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 animate-pulse">Javascript</span>
-         <span class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 animate-pulse">Vue js</span>
-         <span class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 animate-pulse">Astro</span>
-         <span class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 animate-pulse">Tailwind Css</span>
-         <span class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 animate-pulse">Git</span>
+      <p class="md:text-center md:w-[50%] text-balance">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste eius ducimus nostrum maiores autem corrupti provident repellat. Iure ullam fuga ab fugit aspernatur, illo, eum recusandae quae rerum minus harum!</p>
+      <div class="">
+         <a href="" class="bg-blue-100 text-blue-800 text-md font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 animate-pulse">Github</a>
+         <a href="" class="bg-blue-100 text-blue-800 text-md font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 animate-pulse">LinkedIn</a>
+         
       </div>
    </div>
 </header>
