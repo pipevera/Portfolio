@@ -1,5 +1,8 @@
 ---
-
+import LinkedinIcon from '../icons/Linkedin.astro'
+import GithubIcon from '../icons/Github.astro'
+import MailIcon from '../icons/Mail.astro'
+import Socials from '../components/Socials.astro'
 ---
 
 <header class="text-white w-full h-screen ">
@@ -15,10 +18,20 @@
       <h1 class="text-5xl font-bold md:text-7xl">Felipe Vera</h1>
       <p class="text-2xl">Front End Developer</p>
       <p class="md:text-center md:w-[50%] text-balance">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste eius ducimus nostrum maiores autem corrupti provident repellat. Iure ullam fuga ab fugit aspernatur, illo, eum recusandae quae rerum minus harum!</p>
-      <div class="flex gap-x-2">
-         <a href="https://github.com/pipevera" target="_blank" rel="noopener" class="bg-blue-100 text-blue-800 text-sm me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 animate-pulse hover:scale-110 transition">Github</a>
-         <a href="https://www.linkedin.com/in/felipeverach/" target="_blank" rel="noopener" class="bg-blue-100 text-blue-800 text-sm me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 animate-pulse hover:scale-110 transition">LinkedIn</a>
-         <a href="mailto:felipevera10@gmail.com" target="_blank" rel="noopener" class="bg-blue-100 text-blue-800 text-sm me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 animate-pulse hover:scale-110 transition">felipevera10@gmail.com</a>
+      <div class="flex gap-x-3">
+         <Socials href="https://github.com/pipevera">
+            <GithubIcon></GithubIcon>
+            Github
+         </Socials>
+         <Socials href="https://www.linkedin.com/in/felipeverach/">
+            <LinkedinIcon></LinkedinIcon>
+            Linkedin
+         </Socials>
+         <Socials href="mailto:felipevera10@gmail.com">
+            <MailIcon></MailIcon>
+            felipevera10gmail.com
+         </Socials>
+         
       </div>
    </div>
 </header>
