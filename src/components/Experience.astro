@@ -16,21 +16,16 @@ const EXPERIENCE = [
 ]
 ---
 
-
-
-  
-      <ol class="relative border-s border-gray-200 dark:border-gray-700 md:px-6">         
-         {
-            EXPERIENCE.map(experience => (
-            <li class="mb-10 ms-4">
-               <ExperienceItem {...experience}/>
-            </li>
-            ))
-         }         
-         
-        
-      </ol>
-   </div>
+<ol class="relative border-s border-gray-200 dark:border-gray-700 md:px-6">         
+   {
+      EXPERIENCE.map(experience => (
+         <li class="mb-10 ms-4">
+            <ExperienceItem {...experience}/>
+         </li>
+      ))
+   }            
+</ol>
+ 
 
 
 

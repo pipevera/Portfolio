@@ -1,49 +1,59 @@
 ---
+import GithubIcon from '../icons/Github.astro'
 const PROJECTS = [
    {
       title: 'CompromisoTech',
       description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste eius ducimus nostrum maiores autem corrupti provident repellat.',
       link: 'https://admirable-gecko-18e75a.netlify.app/',
-      github: '#',
+      github: 'https://github.com/pipevera/CompromisoTech',
       image: '/img/compromisoTech.png',
-      tags: ['HTML', 'CSS', 'JAVASCRIPT', 'VUE JS', 'BOOTSTRAP', 'TAILWIND CSS']
+      tags: ['HTML', 'CSS', 'JAVASCRIPT', 'BOOTSTRAP']
    },
    {
       title: 'Incubadora Reworth',
       description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste eius ducimus nostrum maiores autem corrupti provident repellat.',
       link: 'https://heroic-cassata-4e6c38.netlify.app/',
-      github: '#',
+      github: 'https://github.com/pipevera/incubadora',
       image: '/img/incubadora.png',
-      tags: ['HTML', 'CSS', 'JAVASCRIPT', 'VUE JS', 'BOOTSTRAP', 'TAILWIND CSS']
+      tags: ['HTML', 'CSS', 'JAVASCRIPT', 'BOOTSTRAP']
    },
    {
       title: 'Racing Performance',
       description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste eius ducimus nostrum maiores autem corrupti provident repellat.',
       link: 'https://amazing-almeida-26e6e0.netlify.app/',
-      github: '#',
+      github: 'https://github.com/pipevera/racingPerformance',
       image: '/img/racingPerformance.png',
-      tags: ['HTML', 'CSS', 'JAVASCRIPT', 'VUE JS', 'BOOTSTRAP', 'TAILWIND CSS']
-   }
+      tags: ['HTML', 'CSS', 'JAVASCRIPT', 'VUE JS', 'VUETIFY']
+   },
+   {
+      title: 'Travels',
+      description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste eius ducimus nostrum maiores autem corrupti provident repellat.',
+      link: 'https://travels-tailwind.netlify.app/',
+      github: 'https://github.com/pipevera/TravelsTailwindcss',
+      image: '/img/travels.png',
+      tags: ['HTML', 'TAILWIND CSS']
+   },
 ]
 ---
-
-
-
 
 <div class="flex flex-col md:flex-row md:justify-center md:items-center gap-8">
    {  
       PROJECTS.map(({title, description, link, github, image, tags}) => 
-         <div class="max-w-sm rounded-md">
-            <a href=`${link}` target="_blank">
-               <img class="rounded-md hover:scale-110 transition" src={image} alt="" />
+      <div class="max-w-sm rounded-md">
+         <a href=`${link}` target="_blank">
+            <img class="rounded-md hover:scale-110 transition" src={image} alt="" />
+         </a>
+         <div class="p-5">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-white">{title}</h5>
+            <p class="mb-3 font-normal text-white">{description}</p>
+            <a href={github} class="inline-flex gap-x-1 bg-blue-100 text-blue-800 text-xs md:text-sm  px-2 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 animate-pulse hover:scale-110 transition" target="_blank" rel="noopener" >
+               <GithubIcon></GithubIcon>
+               github
             </a>
-            <div class="p-5">
-               <h5 class="mb-2 text-2xl font-bold tracking-tight text-white">{title}</h5>
-               <p class="mb-3 font-normal text-white">{description}</p>
-            </div>
          </div>
-            )
-      }
+      </div>
+      )
+   }
 </div>
 
 
