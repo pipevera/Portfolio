@@ -1,0 +1,60 @@
+---
+const PROJECTS = [
+   {
+      title: 'CompromisoTech',
+      description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste eius ducimus nostrum maiores autem corrupti provident repellat.',
+      link: 'https://admirable-gecko-18e75a.netlify.app/',
+      github: '#',
+      image: '/public/img/compromisoTech.png',
+      tags: ['HTML', 'CSS', 'JAVASCRIPT', 'VUE JS', 'BOOTSTRAP', 'TAILWIND CSS']
+   },
+   {
+      title: 'Incubadora Reworth',
+      description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste eius ducimus nostrum maiores autem corrupti provident repellat.',
+      link: 'https://heroic-cassata-4e6c38.netlify.app/',
+      github: '#',
+      image: '/public/img/incubadora.png',
+      tags: ['HTML', 'CSS', 'JAVASCRIPT', 'VUE JS', 'BOOTSTRAP', 'TAILWIND CSS']
+   },
+   {
+      title: 'Racing Performance',
+      description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste eius ducimus nostrum maiores autem corrupti provident repellat.',
+      link: 'https://amazing-almeida-26e6e0.netlify.app/',
+      github: '#',
+      image: '/public/img/racingPerformance.png',
+      tags: ['HTML', 'CSS', 'JAVASCRIPT', 'VUE JS', 'BOOTSTRAP', 'TAILWIND CSS']
+   }
+]
+---
+
+
+
+
+<div class="flex flex-wrap gap-6">
+   {  
+      PROJECTS.map(({title, description, link, github, image, tags}) => 
+         <div class="max-w-sm rounded-md">
+            <a href="">
+               <img class="rounded-md" src={image} alt="" />
+            </a>
+            <div class="p-5">
+               <a href=`${link}` target="_blank">
+                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-white">{title}</h5>
+               </a>
+               <p class="mb-3 font-normal text-white">{description}</p>
+               <div class="flex">
+                  {
+                  tags.map(tag => (
+                  <p>{tag}</p>
+                     ))
+                  }
+               </div>
+            </div>
+         </div>
+            )
+      }
+</div>
+
+
+
+

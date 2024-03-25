@@ -1,6 +1,11 @@
-<section class="container mx-auto w-full h-screen flex flex-col justify-center items-start md:items-center px-6">
+---
+const {id} = Astro.props
+---
+
+
+<section id={id} class="container mx-auto w-full h-screen flex flex-col justify-center items-start md:items-center px-6">
    <div class=" text-white w-full container mx-auto ">
-      <h1 class="text-5xl font-bold md:text-7xl flex  text-yellow-300 mb-10">Experience</h1>
+      
    </div>
    <slot />
 </section>
