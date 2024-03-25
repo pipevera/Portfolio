@@ -34,15 +34,12 @@ const PROJECTS = [
    {  
       PROJECTS.map(({title, description, link, github, image, tags}) => 
          <div class="max-w-sm rounded-md">
-            <a href="">
-               <img class="rounded-md" src={image} alt="" />
+            <a href=`${link}` target="_blank">
+               <img class="rounded-md hover:scale-110 transition" src={image} alt="" />
             </a>
             <div class="p-5">
-               <a href=`${link}` target="_blank">
-                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-white">{title}</h5>
-               </a>
+               <h5 class="mb-2 text-2xl font-bold tracking-tight text-white">{title}</h5>
                <p class="mb-3 font-normal text-white">{description}</p>
-               
             </div>
          </div>
             )
