@@ -5,7 +5,7 @@ const PROJECTS = [
       description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste eius ducimus nostrum maiores autem corrupti provident repellat.',
       link: 'https://admirable-gecko-18e75a.netlify.app/',
       github: '#',
-      image: '/public/img/compromisoTech.png',
+      image: '/img/compromisoTech.png',
       tags: ['HTML', 'CSS', 'JAVASCRIPT', 'VUE JS', 'BOOTSTRAP', 'TAILWIND CSS']
    },
    {
@@ -13,7 +13,7 @@ const PROJECTS = [
       description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste eius ducimus nostrum maiores autem corrupti provident repellat.',
       link: 'https://heroic-cassata-4e6c38.netlify.app/',
       github: '#',
-      image: '/public/img/incubadora.png',
+      image: '/img/incubadora.png',
       tags: ['HTML', 'CSS', 'JAVASCRIPT', 'VUE JS', 'BOOTSTRAP', 'TAILWIND CSS']
    },
    {
@@ -21,7 +21,7 @@ const PROJECTS = [
       description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste eius ducimus nostrum maiores autem corrupti provident repellat.',
       link: 'https://amazing-almeida-26e6e0.netlify.app/',
       github: '#',
-      image: '/public/img/racingPerformance.png',
+      image: '/img/racingPerformance.png',
       tags: ['HTML', 'CSS', 'JAVASCRIPT', 'VUE JS', 'BOOTSTRAP', 'TAILWIND CSS']
    }
 ]
@@ -30,7 +30,7 @@ const PROJECTS = [
 
 
 
-<div class="flex flex-wrap gap-6">
+<div class="flex flex-col md:flex-row md:justify-center md:items-center gap-8">
    {  
       PROJECTS.map(({title, description, link, github, image, tags}) => 
          <div class="max-w-sm rounded-md">
@@ -42,13 +42,7 @@ const PROJECTS = [
                      <h5 class="mb-2 text-2xl font-bold tracking-tight text-white">{title}</h5>
                </a>
                <p class="mb-3 font-normal text-white">{description}</p>
-               <div class="flex">
-                  {
-                  tags.map(tag => (
-                  <p>{tag}</p>
-                     ))
-                  }
-               </div>
+               
             </div>
          </div>
             )
