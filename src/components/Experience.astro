@@ -1,33 +1,33 @@
 ---
-import ExperienceItem from "./ExperienceItem.astro"
+import ExperienceItem from "./ExperienceItem.astro";
 const EXPERIENCE = [
-   {
-      date: 'Noviembre 2023 - Actualidad',
-      title: "Desarrollador Front End - MyWacc",
-      description: "Desarrollo de una interfaz dinámica y receptiva en Vue.js para una navegación fluida y experiencia intuitiva. Implementé componentes reutilizables, colaboré con el equipo Frontend para el diseño y prioricé la coherencia estética y usabilidad del sitio.",
-      
-   },
-   {
-      date: 'Abril 2021 - Agosto 2023',
-      title: "Analista de procesos y Desarrollador Front End - Desafío Latam",
-      description: "Automatización de procesos del área y gestión de HubSpot CRM. Experiencia en Google Data Studio. Creación de landings pages para Desafío Latam y proyectos externos. Además, tutor del curso Fundamentos de Desarrollo Web.",
-    
-   }
-]
+  {
+    date: "Junio 2024 - Actualidad",
+    title: "Desarrollador Front-End - Agencia Quiebre",
+    description:
+      "Desarrollo de soluciones frontend utilizando Vue.js, Nuxt.js y Electron, con un enfoque en la creación de componentes reutilizables para aplicaciones dinámicas y eficientes. He implementado Electron para crear aplicaciones de escritorio integradas con Nuxt.js, ampliando nuestras soluciones web a entornos de escritorio.",
+  },
+  {
+    date: "Noviembre 2023 - Mayo 2024",
+    title: "Desarrollador Front-End - MyWacc",
+    description:
+      "Desarrollo de una interfaz dinámica y receptiva en Vue.js para una navegación fluida y experiencia intuitiva. Implementé componentes reutilizables, colaboré con el equipo Frontend para el diseño y prioricé la coherencia estética y usabilidad del sitio.",
+  },
+  {
+    date: "Abril 2021 - Agosto 2023",
+    title: "Analista de procesos y Desarrollador Web - Desafío Latam",
+    description:
+      "Automatización de procesos del área y gestión de HubSpot CRM. Experiencia en Google Data Studio. Creación de landings pages para Desafío Latam y proyectos externos. Además, tutor del curso Fundamentos de Desarrollo Web.",
+  },
+];
 ---
 
-<ol class="relative border-s border-gray-200 dark:border-gray-700 md:px-6">         
-   {
-      EXPERIENCE.map(experience => (
-         <li class="mb-10 ms-4">
-            <ExperienceItem {...experience}/>
-         </li>
-      ))
-   }            
+<ol class="relative border-s border-gray-200 dark:border-gray-700 md:px-6">
+  {
+    EXPERIENCE.map((experience) => (
+      <li class="mb-10 ms-4">
+        <ExperienceItem {...experience} />
+      </li>
+    ))
+  }
 </ol>
- 
-
-
-
-
-
