@@ -1,8 +1,7 @@
 ---
-
-import '@fontsource-variable/onest';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro'
+import "@fontsource-variable/onest";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 
 interface Props {
 	title: string;
@@ -21,7 +20,7 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body>
+	<body class="overflow-x-hidden">
 		<Header />
 		<slot />
 		<Footer />
@@ -32,10 +31,16 @@ const { title } = Astro.props;
 		color-scheme: light dark;
 	}
 	html {
-		font-family: 'Onest Variable', system-ui, sans-serif;
-		
+		font-family: "Onest Variable", system-ui, sans-serif;
 	}
 	body {
-		background-image: linear-gradient(#0f0c29, #302b63);
+		background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+		background-attachment: fixed;
+	}
+	
+	/* Animación de gradiente sutil */
+	@keyframes gradientShift {
+		0%, 100% { background-position: 0% 50%; }
+		50% { background-position: 100% 50%; }
 	}
 </style>

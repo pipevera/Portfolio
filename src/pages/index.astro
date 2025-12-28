@@ -3,32 +3,51 @@ import Layout from '../layouts/Layout.astro';
 import Experience from '../components/Experience.astro'
 import SectionContainer from '../components/SectionContainer.astro';
 import Projects from '../components/Projects.astro'
-import Contact from '../components/Contact.astro'
 ---
 
 <Layout title="Portfolio | Felipe Vera">
-	<main class="max-w-[1300px] mx-auto" >
+	<main class="max-w-[1400px] mx-auto relative">
 		<SectionContainer id="experiencia">
-			<div class="w-full">
-				<h1 class="text-5xl font-bold md:text-7xl text-yellow-300 mb-10">Experiencia</h1>
+			<div class="w-full mb-16">
+				<h2 class="text-5xl font-bold md:text-7xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-500 mb-4 section-title">
+					Experiencia
+				</h2>
+				<div class="h-1 w-32 bg-gradient-to-r from-yellow-300 to-transparent rounded-full"></div>
 			</div>
 			<Experience />
 		</SectionContainer>
-		<div class="container mx-auto w-full md:h-screen flex flex-col justify-center items-center px-6" id="proyectos">
-			<div class="w-full">
-				<h1 class="text-5xl font-bold md:text-7xl text-yellow-300 mb-10">Proyectos</h1>
+
+		<div class="container mx-auto w-full min-h-screen flex flex-col justify-center items-center px-6 py-20" id="proyectos">
+			<div class="w-full mb-16">
+				<h2 class="text-5xl font-bold md:text-7xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-500 mb-4 section-title">
+					Proyectos
+				</h2>
+				<div class="h-1 w-32 bg-gradient-to-r from-yellow-300 to-transparent rounded-full"></div>
 			</div>
 			<Projects />
 		</div>
-		<!-- <SectionContainer id="contacto">
-			<div class="w-full">
-				<h1 class="text-5xl font-bold md:text-7xl text-yellow-300 mb-10">Contacto</h1>
-			</div>
-			<Contact />
-		</SectionContainer> -->
 	</main>
 </Layout>
 
-<style>
-	
-</style>
+<script>
+	import { gsap } from 'gsap';
+	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+	gsap.registerPlugin(ScrollTrigger);
+
+	// Animación de títulos de sección
+	gsap.utils.toArray('.section-title').forEach((title: any) => {
+		gsap.from(title, {
+			scrollTrigger: {
+				trigger: title,
+				start: 'top 80%',
+				end: 'top 50%',
+				toggleActions: 'play none none reverse'
+			},
+			x: -100,
+			opacity: 0,
+			duration: 1,
+			ease: 'power3.out'
+		});
+	});
+</script>

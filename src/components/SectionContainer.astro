@@ -2,10 +2,6 @@
 const {id} = Astro.props
 ---
 
-
-<section id={id} class="container mx-auto w-full h-screen flex flex-col justify-center items-centeritems-center px-6">
-   <div class=" text-white w-full container mx-auto ">
-      
-   </div>
+<section id={id} class="container mx-auto w-full min-h-screen flex flex-col justify-center items-center px-6 py-20 relative">
    <slot />
 </section>

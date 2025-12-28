@@ -5,20 +5,43 @@ import MailIcon from '../icons/Mail.astro'
 import Socials from '../components/Socials.astro'
 ---
 
-<header class="text-white w-full h-screen ">
-   <div class="flex container mx-auto items-center justify-center p-6 border animate-fade-down animate-duration-[2500ms] animate-delay-[1500ms]">
-      
-      <nav class="flex space-x-4 md:space-x-10">
-         <a href="#experiencia" class="hover:scale-125 hover:text-yellow-300 transition">Experiencia</a>
-         <a href="#proyectos" class="hover:scale-125 hover:text-yellow-300 transition">Proyectos</a>
-         <a href="#contacto" class="hover:scale-125 hover:text-yellow-300 transition">Contacto</a>
-      </nav>
+<header class="text-white w-full min-h-screen relative overflow-hidden">
+   <!-- Efecto de partículas de fondo -->
+   <div class="absolute inset-0 opacity-20">
+      <div class="absolute top-20 left-10 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
+      <div class="absolute top-40 right-10 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl animate-pulse animation-delay-2000"></div>
+      <div class="absolute bottom-20 left-1/2 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl animate-pulse animation-delay-4000"></div>
    </div>
-   <div class="w-full gap-3 px-6 container mx-auto flex flex-col justify-center items-start md:items-center h-5/6 animate-fade-up  animate-duration-[2500ms] animate-ease-in-out">
-      <h1 class="text-6xl font-bold md:text-9xl opacity-90">Felipe Vera</h1>
-      <p class="text-3xl text-yellow-300 md:text-5xl ">Front End Developer</p>
-      <!-- <p class="md:text-center md:w-[50%] text-pretty opacity-90">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste eius ducimus nostrum maiores autem corrupti provident repellat. Iure ullam fuga ab fugit aspernatur, illo, eum recusandae quae rerum minus harum!</p> -->
-      <div class="flex gap-3 flex-wrap">
+
+   <nav class="fixed top-3 left-1/2 -translate-x-1/2 z-50 flex items-center justify-center px-8 py-4 backdrop-blur-md bg-white/5 border border-white/20 rounded-full shadow-lg shadow-black/20" id="nav">
+      <div class="flex space-x-6 md:space-x-12 text-sm md:text-base">
+         <a href="#experiencia" class="relative group hover:text-yellow-300 transition-colors duration-300">
+            <span>Experiencia</span>
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-300 transition-all duration-300 group-hover:w-full"></span>
+         </a>
+         <a href="#proyectos" class="relative group hover:text-yellow-300 transition-colors duration-300">
+            <span>Proyectos</span>
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-300 transition-all duration-300 group-hover:w-full"></span>
+         </a>
+         <a href="#contacto" class="relative group hover:text-yellow-300 transition-colors duration-300">
+            <span>Contacto</span>
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-300 transition-all duration-300 group-hover:w-full"></span>
+         </a>
+      </div>
+   </nav>
+
+   <div class="relative z-10 w-full gap-6 px-6 container mx-auto flex flex-col justify-center items-start md:items-center min-h-[calc(100vh-80px)]" id="hero">
+      <div class="space-y-4 text-center md:text-center">
+         <h1 class="text-6xl font-bold md:text-8xl lg:text-9xl opacity-90 bg-clip-text text-transparent bg-gradient-to-r from-white via-yellow-200 to-yellow-400" id="hero-title">
+            Felipe Vera
+         </h1>
+         <p class="text-2xl md:text-4xl lg:text-5xl text-yellow-300 font-light tracking-wide" id="hero-subtitle">
+            Front End Developer
+         </p>
+         <div class="h-1 w-24 bg-gradient-to-r from-yellow-300 to-purple-500 mx-auto rounded-full" id="hero-line"></div>
+      </div>
+      
+      <div class="flex gap-3 flex-wrap justify-center mt-8" id="hero-socials">
          <Socials href="https://github.com/pipevera">
             <GithubIcon></GithubIcon>
             Github
@@ -34,3 +57,47 @@ import Socials from '../components/Socials.astro'
       </div>
    </div>
 </header>
+
+<script>
+   import { gsap } from 'gsap';
+
+   // Esperar a que el DOM esté listo
+   document.addEventListener('DOMContentLoaded', () => {
+      // Establecer estados iniciales
+      gsap.set('#nav', { y: -100, opacity: 0 });
+      gsap.set('#hero-title', { y: 100, opacity: 0, scale: 0.8 });
+      gsap.set('#hero-subtitle', { y: 50, opacity: 0 });
+      gsap.set('#hero-line', { scaleX: 0 });
+      gsap.set('#hero-socials > *', { y: 30, opacity: 0 });
+
+      // Animaciones del hero
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+      
+      tl.to('#nav', {
+         y: 0,
+         opacity: 1,
+         duration: 1
+      })
+      .to('#hero-title', {
+         y: 0,
+         opacity: 1,
+         scale: 1,
+         duration: 1
+      }, '-=0.5')
+      .to('#hero-subtitle', {
+         y: 0,
+         opacity: 1,
+         duration: 0.8
+      }, '-=0.5')
+      .to('#hero-line', {
+         scaleX: 1,
+         duration: 0.6
+      }, '-=0.3')
+      .to('#hero-socials > *', {
+         y: 0,
+         opacity: 1,
+         duration: 0.5,
+         stagger: 0.1
+      }, '-=0.3');
+   });
+</script>
