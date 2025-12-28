@@ -6,42 +6,37 @@ import Socials from '../components/Socials.astro'
 ---
 
 <header class="text-white w-full min-h-screen relative overflow-hidden">
-   <!-- Efecto de partículas de fondo -->
-   <div class="absolute inset-0 opacity-20">
-      <div class="absolute top-20 left-10 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
-      <div class="absolute top-40 right-10 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl animate-pulse animation-delay-2000"></div>
-      <div class="absolute bottom-20 left-1/2 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl animate-pulse animation-delay-4000"></div>
+   <!-- Canvas para partículas -->
+   <canvas id="particles-canvas" class="absolute inset-0 w-full h-full"></canvas>
+
+   <!-- Efecto de luz de fondo -->
+   <div class="absolute inset-0 opacity-30">
+      <div class="absolute top-20 left-10 w-96 h-96 bg-cyan-400 rounded-full mix-blend-screen filter blur-3xl animate-pulse"></div>
+      <div class="absolute top-40 right-10 w-96 h-96 bg-blue-500 rounded-full mix-blend-screen filter blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+      <div class="absolute bottom-20 left-1/2 w-96 h-96 bg-cyan-300 rounded-full mix-blend-screen filter blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
    </div>
 
-   <nav class="fixed top-3 left-1/2 -translate-x-1/2 z-50 flex items-center justify-center px-8 py-4 backdrop-blur-md bg-white/5 border border-white/20 rounded-full shadow-lg shadow-black/20" id="nav">
-      <div class="flex space-x-6 md:space-x-12 text-sm md:text-base">
-         <a href="#experiencia" class="relative group hover:text-yellow-300 transition-colors duration-300">
-            <span>Experiencia</span>
-            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-300 transition-all duration-300 group-hover:w-full"></span>
-         </a>
-         <a href="#proyectos" class="relative group hover:text-yellow-300 transition-colors duration-300">
-            <span>Proyectos</span>
-            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-300 transition-all duration-300 group-hover:w-full"></span>
-         </a>
-         <a href="#contacto" class="relative group hover:text-yellow-300 transition-colors duration-300">
-            <span>Contacto</span>
-            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-300 transition-all duration-300 group-hover:w-full"></span>
-         </a>
+   <div class="relative z-10 w-full gap-8 px-6 container mx-auto flex flex-col justify-center items-center min-h-[calc(100vh-80px)]" id="hero">
+      <!-- Badge de disponibilidad -->
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-cyan-500/10 border border-cyan-500/30 rounded-full backdrop-blur-sm" id="hero-badge">
+         <span class="relative flex h-3 w-3">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-cyan-400"></span>
+         </span>
+         <span class="text-cyan-400 text-sm font-medium">Disponible para proyectos</span>
       </div>
-   </nav>
 
-   <div class="relative z-10 w-full gap-6 px-6 container mx-auto flex flex-col justify-center items-start md:items-center min-h-[calc(100vh-80px)]" id="hero">
-      <div class="space-y-4 text-center md:text-center">
-         <h1 class="text-6xl font-bold md:text-8xl lg:text-9xl opacity-90 bg-clip-text text-transparent bg-gradient-to-r from-white via-yellow-200 to-yellow-400" id="hero-title">
+      <div class="space-y-6 text-center">
+         <h1 class="text-6xl font-bold md:text-8xl lg:text-9xl opacity-90 animate-gradient bg-clip-text text-transparent bg-gradient-to-r from-white via-cyan-300 to-cyan-500 bg-[length:200%_auto]" id="hero-title">
             Felipe Vera
          </h1>
-         <p class="text-2xl md:text-4xl lg:text-5xl text-yellow-300 font-light tracking-wide" id="hero-subtitle">
+         <p class="text-2xl md:text-4xl lg:text-5xl text-cyan-400 font-light tracking-wide" id="hero-subtitle">
             Front End Developer
          </p>
-         <div class="h-1 w-24 bg-gradient-to-r from-yellow-300 to-purple-500 mx-auto rounded-full" id="hero-line"></div>
+         <div class="h-1 w-24 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto rounded-full shadow-lg shadow-cyan-400/50" id="hero-line"></div>
       </div>
       
-      <div class="flex gap-3 flex-wrap justify-center mt-8" id="hero-socials">
+      <div class="flex gap-3 flex-wrap justify-center" id="hero-socials">
          <Socials href="https://github.com/pipevera">
             <GithubIcon></GithubIcon>
             Github
@@ -55,35 +50,136 @@ import Socials from '../components/Socials.astro'
             felipevera10@gmail.com
          </Socials>
       </div>
+
+      <!-- CTA Button -->
+      <a 
+         href="#proyectos" 
+         class="group relative px-8 py-4 bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-bold rounded-full hover:shadow-2xl hover:shadow-cyan-400/50 transition-all duration-300 hover:scale-105 overflow-hidden"
+         id="hero-cta"
+      >
+         <span class="relative z-10">Ver mi trabajo</span>
+         <div class="absolute inset-0 bg-gradient-to-r from-cyan-300 to-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      </a>
+
+     
    </div>
 </header>
 
 <script>
    import { gsap } from 'gsap';
 
+   // Sistema de partículas
+   const canvas = document.getElementById('particles-canvas') as HTMLCanvasElement;
+   const ctx = canvas.getContext('2d')!;
+   
+   canvas.width = window.innerWidth;
+   canvas.height = window.innerHeight;
+
+   class Particle {
+      x: number;
+      y: number;
+      size: number;
+      speedX: number;
+      speedY: number;
+      opacity: number;
+
+      constructor() {
+         this.x = Math.random() * canvas.width;
+         this.y = Math.random() * canvas.height;
+         this.size = Math.random() * 2 + 0.5;
+         this.speedX = Math.random() * 0.5 - 0.25;
+         this.speedY = Math.random() * 0.5 - 0.25;
+         this.opacity = Math.random() * 0.5 + 0.2;
+      }
+
+      update() {
+         this.x += this.speedX;
+         this.y += this.speedY;
+
+         if (this.x > canvas.width) this.x = 0;
+         if (this.x < 0) this.x = canvas.width;
+         if (this.y > canvas.height) this.y = 0;
+         if (this.y < 0) this.y = canvas.height;
+      }
+
+      draw() {
+         ctx.fillStyle = `rgba(34, 211, 238, ${this.opacity})`;
+         ctx.beginPath();
+         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+         ctx.fill();
+      }
+   }
+
+   const particles: Particle[] = [];
+   const particleCount = 100;
+
+   for (let i = 0; i < particleCount; i++) {
+      particles.push(new Particle());
+   }
+
+   function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      particles.forEach(particle => {
+         particle.update();
+         particle.draw();
+      });
+
+      // Conectar partículas cercanas
+      for (let i = 0; i < particles.length; i++) {
+         for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < 100) {
+               ctx.strokeStyle = `rgba(34, 211, 238, ${0.1 * (1 - distance / 100)})`;
+               ctx.lineWidth = 0.5;
+               ctx.beginPath();
+               ctx.moveTo(particles[i].x, particles[i].y);
+               ctx.lineTo(particles[j].x, particles[j].y);
+               ctx.stroke();
+            }
+         }
+      }
+
+      requestAnimationFrame(animate);
+   }
+
+   animate();
+
+   window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+   });
+
    // Esperar a que el DOM esté listo
    document.addEventListener('DOMContentLoaded', () => {
       // Establecer estados iniciales
-      gsap.set('#nav', { y: -100, opacity: 0 });
+      gsap.set('#hero-badge', { scale: 0, opacity: 0 });
       gsap.set('#hero-title', { y: 100, opacity: 0, scale: 0.8 });
       gsap.set('#hero-subtitle', { y: 50, opacity: 0 });
       gsap.set('#hero-line', { scaleX: 0 });
       gsap.set('#hero-socials > *', { y: 30, opacity: 0 });
+      gsap.set('#hero-cta', { y: 30, opacity: 0 });
+      gsap.set('#scroll-indicator', { opacity: 0 });
 
       // Animaciones del hero
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
       
-      tl.to('#nav', {
-         y: 0,
+      tl.to('#hero-badge', {
+         scale: 1,
          opacity: 1,
-         duration: 1
+         duration: 0.6,
+         ease: 'back.out(1.7)',
+         delay: 0.5
       })
       .to('#hero-title', {
          y: 0,
          opacity: 1,
          scale: 1,
          duration: 1
-      }, '-=0.5')
+      }, '-=0.3')
       .to('#hero-subtitle', {
          y: 0,
          opacity: 1,
@@ -98,6 +194,24 @@ import Socials from '../components/Socials.astro'
          opacity: 1,
          duration: 0.5,
          stagger: 0.1
+      }, '-=0.3')
+      .to('#hero-cta', {
+         y: 0,
+         opacity: 1,
+         duration: 0.6,
+         ease: 'back.out(1.7)'
+      }, '-=0.2')
+      .to('#scroll-indicator', {
+         opacity: 1,
+         duration: 0.8
       }, '-=0.3');
+
+      // Animación continua del gradiente en el título
+      gsap.to('#hero-title', {
+         backgroundPosition: '200% center',
+         duration: 3,
+         ease: 'none',
+         repeat: -1
+      });
    });
 </script>

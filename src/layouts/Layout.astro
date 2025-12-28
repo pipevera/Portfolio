@@ -2,6 +2,7 @@
 import "@fontsource-variable/onest";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import Nav from "../components/Nav.astro";
 
 interface Props {
 	title: string;
@@ -21,6 +22,7 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body class="overflow-x-hidden">
+		<Nav />
 		<Header />
 		<slot />
 		<Footer />
@@ -28,19 +30,13 @@ const { title } = Astro.props;
 </html>
 <style is:global>
 	:root {
-		color-scheme: light dark;
+		color-scheme: dark;
 	}
 	html {
 		font-family: "Onest Variable", system-ui, sans-serif;
 	}
 	body {
-		background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+		background: linear-gradient(135deg, #0a0e27 0%, #0f1419 50%, #000000 100%);
 		background-attachment: fixed;
-	}
-	
-	/* Animación de gradiente sutil */
-	@keyframes gradientShift {
-		0%, 100% { background-position: 0% 50%; }
-		50% { background-position: 100% 50%; }
 	}
 </style>

@@ -1,0 +1,229 @@
+---
+import MailIcon from '../icons/Mail.astro'
+import LinkedinIcon from '../icons/Linkedin.astro'
+import GithubIcon from '../icons/Github.astro'
+---
+
+<div class="w-full max-w-4xl mx-auto">
+   <div class="grid md:grid-cols-2 gap-8">
+      <!-- Información de contacto -->
+      <div class="space-y-6 contact-info">
+         <div class="space-y-4 contact-text">
+            <h3 class="text-2xl font-bold text-white">¿Tienes un proyecto en mente?</h3>
+            <p class="text-white/70 text-lg">
+               Estoy disponible para trabajar en proyectos freelance o colaboraciones. 
+               No dudes en contactarme.
+            </p>
+         </div>
+
+         <div class="space-y-4">
+            <!-- Email -->
+            <a 
+               href="mailto:felipevera10@gmail.com"
+               class="contact-card group flex items-center gap-4 p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 hover:border-cyan-400/50 hover:bg-white/10 transition-all duration-300"
+            >
+               <div class="flex items-center justify-center w-12 h-12 bg-cyan-400/10 rounded-lg group-hover:bg-cyan-400/20 transition-colors text-cyan-400">
+                  <MailIcon />
+               </div>
+               <div>
+                  <p class="text-sm text-white/60">Email</p>
+                  <p class="text-white font-medium group-hover:text-cyan-400 transition-colors">felipevera10@gmail.com</p>
+               </div>
+            </a>
+
+            <!-- LinkedIn -->
+            <a 
+               href="https://www.linkedin.com/in/felipeverach/"
+               target="_blank"
+               rel="noopener"
+               class="contact-card group flex items-center gap-4 p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 hover:border-cyan-400/50 hover:bg-white/10 transition-all duration-300"
+            >
+               <div class="flex items-center justify-center w-12 h-12 bg-cyan-400/10 rounded-lg group-hover:bg-cyan-400/20 transition-colors text-cyan-400">
+                  <LinkedinIcon />
+               </div>
+               <div>
+                  <p class="text-sm text-white/60">LinkedIn</p>
+                  <p class="text-white font-medium group-hover:text-cyan-400 transition-colors">Felipe Vera</p>
+               </div>
+            </a>
+
+            <!-- GitHub -->
+            <a 
+               href="https://github.com/pipevera"
+               target="_blank"
+               rel="noopener"
+               class="contact-card group flex items-center gap-4 p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 hover:border-cyan-400/50 hover:bg-white/10 transition-all duration-300"
+            >
+               <div class="flex items-center justify-center w-12 h-12 bg-cyan-400/10 rounded-lg group-hover:bg-cyan-400/20 transition-colors text-cyan-400">
+                  <GithubIcon />
+               </div>
+               <div>
+                  <p class="text-sm text-white/60">GitHub</p>
+                  <p class="text-white font-medium group-hover:text-cyan-400 transition-colors">@pipevera</p>
+               </div>
+            </a>
+         </div>
+      </div>
+
+      <!-- Formulario de contacto -->
+      <div class="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-8 form-container">
+         <form class="space-y-6" id="contact-form">
+            <div class="form-field">
+               <label for="name" class="block text-sm font-medium text-white/80 mb-2">Nombre</label>
+               <input 
+                  type="text" 
+                  id="name" 
+                  name="name"
+                  required
+                  class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:border-cyan-400/50 focus:ring-2 focus:ring-cyan-400/20 transition-all"
+                  placeholder="Tu nombre"
+               />
+            </div>
+
+            <div class="form-field">
+               <label for="email" class="block text-sm font-medium text-white/80 mb-2">Email</label>
+               <input 
+                  type="email" 
+                  id="email" 
+                  name="email"
+                  required
+                  class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:border-cyan-400/50 focus:ring-2 focus:ring-cyan-400/20 transition-all"
+                  placeholder="tu@email.com"
+               />
+            </div>
+
+            <div class="form-field">
+               <label for="message" class="block text-sm font-medium text-white/80 mb-2">Mensaje</label>
+               <textarea 
+                  id="message" 
+                  name="message"
+                  rows="4"
+                  required
+                  class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:border-cyan-400/50 focus:ring-2 focus:ring-cyan-400/20 transition-all resize-none"
+                  placeholder="Cuéntame sobre tu proyecto..."
+               ></textarea>
+            </div>
+
+            <button 
+               type="submit"
+               class="form-button w-full px-6 py-3 bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-bold rounded-lg hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300 hover:scale-105"
+            >
+               Enviar mensaje
+            </button>
+         </form>
+      </div>
+   </div>
+</div>
+
+<script>
+   import { gsap } from 'gsap';
+   import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+   gsap.registerPlugin(ScrollTrigger);
+
+   // Esperar a que el DOM esté listo
+   document.addEventListener('DOMContentLoaded', () => {
+      // Establecer estados iniciales
+      gsap.set('.contact-text', { x: -50, opacity: 0 });
+      gsap.set('.contact-card', { x: -30, opacity: 0 });
+      gsap.set('.form-container', { x: 50, opacity: 0 });
+      gsap.set('.form-field', { y: 20, opacity: 0 });
+      gsap.set('.form-button', { scale: 0.8, opacity: 0 });
+
+      // Animación del texto de contacto
+      gsap.to('.contact-text', {
+         scrollTrigger: {
+            trigger: '.contact-info',
+            start: 'top 80%',
+            end: 'top 60%',
+            toggleActions: 'play none none reverse'
+         },
+         x: 0,
+         opacity: 1,
+         duration: 0.8,
+         ease: 'power3.out'
+      });
+
+      // Animación de las tarjetas de contacto con stagger
+      gsap.to('.contact-card', {
+         scrollTrigger: {
+            trigger: '.contact-info',
+            start: 'top 75%',
+            end: 'top 55%',
+            toggleActions: 'play none none reverse'
+         },
+         x: 0,
+         opacity: 1,
+         duration: 0.6,
+         stagger: 0.15,
+         ease: 'back.out(1.4)',
+         delay: 0.3
+      });
+
+      // Animación del contenedor del formulario
+      gsap.to('.form-container', {
+         scrollTrigger: {
+            trigger: '.form-container',
+            start: 'top 80%',
+            end: 'top 60%',
+            toggleActions: 'play none none reverse'
+         },
+         x: 0,
+         opacity: 1,
+         duration: 0.8,
+         ease: 'power3.out'
+      });
+
+      // Animación de los campos del formulario con stagger
+      gsap.to('.form-field', {
+         scrollTrigger: {
+            trigger: '.form-container',
+            start: 'top 75%',
+            end: 'top 55%',
+            toggleActions: 'play none none reverse'
+         },
+         y: 0,
+         opacity: 1,
+         duration: 0.5,
+         stagger: 0.1,
+         ease: 'power2.out',
+         delay: 0.4
+      });
+
+      // Animación del botón con efecto bounce
+      gsap.to('.form-button', {
+         scrollTrigger: {
+            trigger: '.form-button',
+            start: 'top 90%',
+            end: 'top 70%',
+            toggleActions: 'play none none reverse'
+         },
+         scale: 1,
+         opacity: 1,
+         duration: 0.6,
+         ease: 'back.out(1.7)',
+         delay: 0.7
+      });
+   });
+
+   // Manejar el envío del formulario
+   const form = document.getElementById('contact-form') as HTMLFormElement;
+   
+   form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const formData = new FormData(form);
+      const name = formData.get('name');
+      const email = formData.get('email');
+      const message = formData.get('message');
+      
+      // Crear el mailto link
+      const subject = encodeURIComponent(`Contacto desde portfolio - ${name}`);
+      const body = encodeURIComponent(`Nombre: ${name}\nEmail: ${email}\n\nMensaje:\n${message}`);
+      
+      window.location.href = `mailto:felipevera10@gmail.com?subject=${subject}&body=${body}`;
+      
+      // Resetear el formulario
+      form.reset();
+   });
+</script>

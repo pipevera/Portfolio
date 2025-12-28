@@ -3,29 +3,41 @@ import Layout from '../layouts/Layout.astro';
 import Experience from '../components/Experience.astro'
 import SectionContainer from '../components/SectionContainer.astro';
 import Projects from '../components/Projects.astro'
+import Contact from '../components/Contact.astro'
 ---
 
 <Layout title="Portfolio | Felipe Vera">
 	<main class="max-w-[1400px] mx-auto relative">
 		<SectionContainer id="experiencia">
 			<div class="w-full mb-16">
-				<h2 class="text-5xl font-bold md:text-7xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-500 mb-4 section-title">
+				<h2 class="text-5xl font-bold md:text-7xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-4 section-title">
 					Experiencia
 				</h2>
-				<div class="h-1 w-32 bg-gradient-to-r from-yellow-300 to-transparent rounded-full"></div>
+				<div class="h-1 w-32 bg-gradient-to-r from-cyan-400 to-transparent rounded-full shadow-lg shadow-cyan-400/50"></div>
 			</div>
 			<Experience />
 		</SectionContainer>
 
 		<div class="container mx-auto w-full min-h-screen flex flex-col justify-center items-center px-6 py-20" id="proyectos">
 			<div class="w-full mb-16">
-				<h2 class="text-5xl font-bold md:text-7xl text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-500 mb-4 section-title">
+				<h2 class="text-5xl font-bold md:text-7xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-4 section-title">
 					Proyectos
 				</h2>
-				<div class="h-1 w-32 bg-gradient-to-r from-yellow-300 to-transparent rounded-full"></div>
+				<div class="h-1 w-32 bg-gradient-to-r from-cyan-400 to-transparent rounded-full shadow-lg shadow-cyan-400/50"></div>
 			</div>
+			
 			<Projects />
 		</div>
+
+		<SectionContainer id="contacto">
+			<div class="w-full mb-16">
+				<h2 class="text-5xl font-bold md:text-7xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-4 section-title">
+					Contacto
+				</h2>
+				<div class="h-1 w-32 bg-gradient-to-r from-cyan-400 to-transparent rounded-full shadow-lg shadow-cyan-400/50"></div>
+			</div>
+			<Contact />
+		</SectionContainer>
 	</main>
 </Layout>
 

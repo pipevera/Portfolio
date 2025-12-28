@@ -1,0 +1,41 @@
+<nav class="fixed top-3 left-1/2 -translate-x-1/2 z-50 backdrop-blur-md bg-black/30 border border-cyan-500/30 rounded-full shadow-lg shadow-cyan-500/20 w-full max-w-[1400px]" id="nav">
+   <div class="px-8 py-4 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#top" class="text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 transition-all duration-300">
+         Felipe Vera
+      </a>
+
+      <!-- Enlaces de navegación -->
+      <div class="flex space-x-6 md:space-x-12 text-sm md:text-base">
+         <a href="#experiencia" class="relative group hover:text-cyan-400 transition-colors duration-300">
+            <span>Experiencia</span>
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
+         </a>
+         <a href="#proyectos" class="relative group hover:text-cyan-400 transition-colors duration-300">
+            <span>Proyectos</span>
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
+         </a>
+         <a href="#contacto" class="relative group hover:text-cyan-400 transition-colors duration-300">
+            <span>Contacto</span>
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
+         </a>
+      </div>
+   </div>
+</nav>
+
+<script>
+   import { gsap } from 'gsap';
+
+   document.addEventListener('DOMContentLoaded', () => {
+      // Establecer estado inicial del nav
+      gsap.set('#nav', { y: -100, opacity: 0 });
+
+      // Animación del nav
+      gsap.to('#nav', {
+         y: 0,
+         opacity: 1,
+         duration: 1,
+         ease: 'power3.out'
+      });
+   });
+</script>
